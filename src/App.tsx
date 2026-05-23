@@ -26,7 +26,8 @@ import {
   MapPin,
   Cpu,
   Terminal,
-  Send
+  Send,
+  ArrowUp
 } from 'lucide-react';
 
 import { Post, Service } from './types';
@@ -55,6 +56,27 @@ export default function App() {
   const [services, setServices] = useState<Service[]>(servicesData);
   const [isSupabaseModalOpen, setIsSupabaseModalOpen] = useState(false);
   const [dbError, setDbError] = useState<string | null>(null);
+
+  // Back to top state
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const heroEl = document.getElementById('about-section');
+      if (heroEl) {
+        const rect = heroEl.getBoundingClientRect();
+        // Show after scrolling past the about/hero section
+        setShowBackToTop(rect.bottom <= 0);
+      } else {
+        setShowBackToTop(window.scrollY > 500);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   React.useEffect(() => {
     async function loadData() {
@@ -949,6 +971,32 @@ export default function App() {
       <GetInTouchModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} theme={theme} />
       <BlogPostModal post={selectedPost} onClose={() => setSelectedPost(null)} theme={theme} />
       <SupabaseGuideModal isOpen={isSupabaseModalOpen} onClose={() => setIsSupabaseModalOpen(false)} theme={theme} />
+
+      {/* Floating Back-To-Top button */}
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            key="back-to-top"
+            initial={{ opacity: 0, scale: 0.85, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.85, y: 15 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            onClick={() => smoothScrollTo(0, 420)}
+            className={`fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 p-3.5 rounded-full border shadow-2xl backdrop-blur-md flex items-center justify-center transition-all duration-300 group hover:-translate-y-0.5 active:translate-y-0 cursor-pointer ${
+              isDark 
+                ? 'bg-neutral-900/90 hover:bg-neutral-850 text-white border-white/10 hover:shadow-cyan-950/20' 
+                : 'bg-white/90 hover:bg-neutral-50 text-neutral-900 border-neutral-200/80 hover:shadow-neutral-200/30'
+            }`}
+            aria-label="Back to Top"
+            style={{ userSelect: 'none' }}
+          >
+            <ArrowUp 
+              size={18} 
+              className="transition-transform duration-300 group-hover:-translate-y-1" 
+            />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
