@@ -1,0 +1,6 @@
+{
+  "name": "SARFRAJ Portfolio",
+  "description": "The personal portfolio website of SARFRAJ, Product Designer and Developer, featuring recent posts, client services, and contact channels.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

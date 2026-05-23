@@ -1,0 +1,146 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [ 3 0 R ] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /MediaBox [0 0 612 792] /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 3518 >>
+stream
+BT
+/F2 20 Tf
+1 0 0 1 206 740 Tm
+(SARFRAJ SHAIK) Tj
+/F1 10 Tf
+1 0 0 1 180 722 Tm
+(sarfrajshaik03@gmail.com | Portfolio Website) Tj
+ET
+0.5 w
+40 706 m
+572 706 l
+S
+BT
+/F2 12 Tf
+1 0 0 1 40 682 Tm
+(PROFESSIONAL SUMMARY) Tj
+/F1 9.5 Tf
+1 0 0 1 40 664 Tm
+(Final-year Computer Science student & aspiring Data Scientist with hands-on experience in machine learning,) Tj
+1 0 0 1 40 651 Tm
+(statistics-driven predictive modeling, robust data engineering, and interactive analytics dashboards.) Tj
+/F2 12 Tf
+1 0 0 1 40 626 Tm
+(TECHNICAL SPECIALIZATIONS) Tj
+/F2 10 Tf
+1 0 0 1 40 608 Tm
+(\225 Machine Learning & Deep Learning:) Tj
+/F1 9.5 Tf
+1 0 0 1 220 608 Tm
+(PyTorch, Scikit-Learn, Predictive Analysis, Computer Vision, CNNs) Tj
+/F2 10 Tf
+1 0 0 1 40 594 Tm
+(\225 Data Engineering & Analytics:) Tj
+/F1 9.5 Tf
+1 0 0 1 220 594 Tm
+(Python, Pandas, NumPy, SQL, ETL pipelines, Interactive Visualizations) Tj
+/F2 10 Tf
+1 0 0 1 40 580 Tm
+(\225 Web & Database Systems:) Tj
+/F1 9.5 Tf
+1 0 0 1 220 580 Tm
+(React/Vite, TypeScript, TailwindCSS, Express.js, PostgreSQL, FastAPI) Tj
+/F2 12 Tf
+1 0 0 1 40 554 Tm
+(CAPSTONE RESEARCH PROJECTS) Tj
+/F2 10.5 Tf
+1 0 0 1 40 536 Tm
+(1. ClinicaVision: Explainable Radiographic AI Classifier) Tj
+/F1 9.5 Tf
+1 0 0 1 40 522 Tm
+(Designed ensemble neural networks with vision transformers and convolutional layers to identify diagnostic) Tj
+1 0 0 1 40 510 Tm
+(patterns. Implemented layer activation maps (Grad-CAM) to explain local statistical decision weights.) Tj
+/F2 10.5 Tf
+1 0 0 1 40 486 Tm
+(2. AeroSense: Spatiotemporal Environmental Forecaster) Tj
+/F1 9.5 Tf
+1 0 0 1 40 472 Tm
+(Built telemetry pipelines ingesting atmospheric sensor readings. Coded multi-step LSTM & multivariate) Tj
+1 0 0 1 40 460 Tm
+(Prophet modules to forecast micro-ambient air quality changes across urban target zones.) Tj
+/F2 10.5 Tf
+1 0 0 1 40 436 Tm
+(3. DriftSentry: Automated ML Drift Pipeline) Tj
+/F1 9.5 Tf
+1 0 0 1 40 422 Tm
+(Developed modular statistical container assessing pipeline drift and Population Stability Index (PSI) values.) Tj
+1 0 0 1 40 410 Tm
+(Configured auto-retraining alerts triggered upon real-time validation decay.) Tj
+/F2 12 Tf
+1 0 0 1 40 384 Tm
+(ACADEMIC & RESEARCH EXPERIENCE) Tj
+/F2 10.5 Tf
+1 0 0 1 40 366 Tm
+(Undergraduate Researcher & Data Science Intern) Tj
+/F1 10 Tf
+1 0 0 1 400 366 Tm
+(University CS Research Lab | 2023 - Present) Tj
+/F1 9.5 Tf
+1 0 0 1 40 351 Tm
+(Formulates evaluation metrics, performs exploratory log cleaning, and compiles key ML models.) Tj
+/F2 10.5 Tf
+1 0 0 1 40 328 Tm
+(Computer Science Candidate) Tj
+/F1 10 Tf
+1 0 0 1 400 328 Tm
+(School of Info Tech & Engineering | 2020 - 2024) Tj
+/F1 9.5 Tf
+1 0 0 1 40 313 Tm
+(Extensive academic curriculum in advanced algorithms, big data query schemas, and neural network design.) Tj
+/F2 10.5 Tf
+1 0 0 1 40 290 Tm
+(Data Systems Developer) Tj
+/F1 10 Tf
+1 0 0 1 400 290 Tm
+(CS Engineering Lab Projects | 2021 - 2023) Tj
+/F1 9.5 Tf
+1 0 0 1 40 275 Tm
+(Engineered modular relational databases, configured web API layers, and created responsive analytics displays.) Tj
+/F2 12 Tf
+1 0 0 1 40 248 Tm
+(CORE COMPETENCIES & COMPUTING SKILLS) Tj
+/F1 9.5 Tf
+1 0 0 1 40 230 Tm
+(Development Stack: JavaScript, TypeScript, React, Express, Python, FastAPI, SQL, PostgreSQL, Git, CSS/Tailwind) Tj
+1 0 0 1 40 216 Tm
+(Data Stack: NumPy, Pandas, Scikit-Learn, PyTorch, Matplotlib, Prophet, ETL Pipelines, Statistical Modeling) Tj
+/F1 8.5 Tf
+1 0 0 1 146 170 Tm
+(Prepared on behalf of Sarfraj Shaik. Fully compliant high-fidelity digital reproduction.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000117 00000 n 
+0000000253 00000 n 
+0000003823 00000 n 
+0000003893 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3968
+%%EOF

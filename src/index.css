@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", var(--font-sans);
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom palette matching SARFRAJ's beautiful new #212529 and #F1FAEE foundation themes */
+  --color-solo-bg-dark: #212529;
+  --color-solo-card-dark: #2A2E33;
+  --color-solo-border-dark: #3E444B;
+  --color-solo-accent: #F1FAEE;
+  --color-solo-accent-hover: #FFFFFF;
+
+  --color-solo-bg-light: #F1FAEE;
+  --color-solo-card-light: #FFFFFF;
+  --color-solo-border-light: #CED4DA;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom background dotted grid */
+.bg-dots-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+.bg-dots-light {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* Fluid hardware-accelerated floating keyframes for background light elements */
+@keyframes float-slow {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(45px, -70px) scale(1.12); }
+  66% { transform: translate(-30px, 40px) scale(0.92); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes float-slower {
+  0% { transform: translate(0px, 0px) scale(1.08); }
+  33% { transform: translate(-65px, 50px) scale(0.88); }
+  66% { transform: translate(55px, -55px) scale(1.04); }
+  100% { transform: translate(0px, 0px) scale(1.08); }
+}
+
+@keyframes float-slowest {
+  0% { transform: translate(0px, 0px) scale(0.95); }
+  33% { transform: translate(40px, 60px) scale(1.1); }
+  66% { transform: translate(-50px, -50px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(0.95); }
+}
+
+.animate-float-slow {
+  animation: float-slow 24s infinite ease-in-out;
+  will-change: transform;
+}
+
+.animate-float-slower {
+  animation: float-slower 32s infinite ease-in-out;
+  will-change: transform;
+}
+
+.animate-float-slowest {
+  animation: float-slowest 40s infinite ease-in-out;
+  will-change: transform;
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 120, 120, 0.4);
+}
