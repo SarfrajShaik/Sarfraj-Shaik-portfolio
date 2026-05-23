@@ -283,6 +283,7 @@ export default function AestheticVisualizer({ theme }: AestheticVisualizerProps)
       transform: transformStr,
       width: `${size}px`,
       height: `${size}px`,
+      willChange: 'transform',
       transition: animatingFace ? 'transform 320ms cubic-bezier(0.25, 1, 0.5, 1)' : 'none'
     };
   };

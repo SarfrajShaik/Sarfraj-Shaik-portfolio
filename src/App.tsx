@@ -304,31 +304,7 @@ export default function App() {
                 </motion.div>
               </div>
 
-              {/* Supabase Connection Status Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.1 }}
-                onClick={() => setIsSupabaseModalOpen(true)}
-                className={`mb-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-mono font-medium tracking-tight cursor-pointer hover:opacity-90 select-none ${
-                  isSupabaseConfigured
-                    ? 'bg-emerald-500/10 text-emerald-600 dark:text-[#F1FAEE] border border-emerald-500/20'
-                    : 'bg-amber-500/10 text-amber-600 dark:text-amber-300 border border-amber-500/20'
-                }`}
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
-                    isSupabaseConfigured ? 'bg-emerald-400' : 'bg-amber-400'
-                  }`}></span>
-                  <span className={`relative inline-flex rounded-full h-2 w-2 ${
-                    isSupabaseConfigured ? 'bg-emerald-500' : 'bg-amber-500'
-                  }`}></span>
-                </span>
-                <span>
-                  {isSupabaseConfigured ? 'Supabase Connected' : 'Supabase Demo Sandbox'}
-                </span>
-                <span className="opacity-60">• Click Setup Guide</span>
-              </motion.div>
+
 
               {/* Display Display Header with Sleek Spotlight Gradient */}
               <motion.h1

@@ -33,6 +33,9 @@ export default function MovingBackground({ theme }: MovingBackgroundProps) {
     let height = 0;
     let mouse = { x: -1000, y: -1000, active: false };
 
+    // Detect mobile device
+    const isMobile = window.innerWidth < 768;
+
     // Setup canvas size
     const resizeCanvas = () => {
       if (!canvas || !containerRef.current) return;
@@ -40,8 +43,9 @@ export default function MovingBackground({ theme }: MovingBackgroundProps) {
       width = rect.width;
       height = rect.height;
       
-      // Use device pixel ratio for super-crisp drawing on high-DPI displays
-      const dpr = window.devicePixelRatio || 1;
+      // Use device pixel ratio for super-crisp drawing on high-DPI displays.
+      // Cap at 1 on mobile for a 4x-9x rendering boost with zero noticeable blur.
+      const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       ctx.scale(dpr, dpr);
@@ -52,7 +56,8 @@ export default function MovingBackground({ theme }: MovingBackgroundProps) {
     // Initialize particles based on screen density/dimensions
     const initParticles = () => {
       particles = [];
-      const density = Math.min(60, Math.floor((width * height) / 24000));
+      // Reduce density count on mobile to 18 for massive arithmetic and draw call savings
+      const density = isMobile ? 18 : Math.min(60, Math.floor((width * height) / 24000));
       const colors = isDark 
         ? ['rgba(56, 189, 248, ', 'rgba(20, 184, 166, ', 'rgba(99, 102, 241, ']  // sky, teal, indigo
         : ['rgba(2, 132, 199, ', 'rgba(13, 148, 136, ', 'rgba(79, 70, 229, ']; // sky, teal, indigo
@@ -64,8 +69,8 @@ export default function MovingBackground({ theme }: MovingBackgroundProps) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.28, // Ultra-slow drift speed
-          vy: (Math.random() - 0.5) * 0.28,
+          vx: (Math.random() - 0.5) * (isMobile ? 0.18 : 0.28), // Slower drift on mobile for calmer feel
+          vy: (Math.random() - 0.5) * (isMobile ? 0.18 : 0.28),
           radius: Math.random() * 2 + 1,
           alpha: 0, // Fade in initially
           targetAlpha,
@@ -76,7 +81,7 @@ export default function MovingBackground({ theme }: MovingBackgroundProps) {
 
     // Tracking mouse movements relative to the page
     const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return;
+      if (isMobile || !containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
       
       // Calculate mouse positioning relative to document scroll
@@ -102,7 +107,7 @@ export default function MovingBackground({ theme }: MovingBackgroundProps) {
       ctx.clearRect(0, 0, width, height);
 
       // 1. Draw connecting mesh elements
-      const connectionDist = 120;
+      const connectionDist = isMobile ? 75 : 120;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const pi = particles[i];
@@ -120,12 +125,17 @@ export default function MovingBackground({ theme }: MovingBackgroundProps) {
             ctx.moveTo(pi.x, pi.y);
             ctx.lineTo(pj.x, pj.y);
             
-            // Draw gradient lines to feel organic and fluid
-            const grad = ctx.createLinearGradient(pi.x, pi.y, pj.x, pj.y);
-            grad.addColorStop(0, pi.color + lineOpacity + ')');
-            grad.addColorStop(1, pj.color + lineOpacity + ')');
+            if (isMobile) {
+              // Bypass nested linear gradient allocation on mobile for stellar CPU garbage-collector savings
+              ctx.strokeStyle = (isDark ? 'rgba(56, 189, 248, ' : 'rgba(2, 132, 199, ') + lineOpacity + ')';
+            } else {
+              // Draw gradient lines on desktop to feel organic and fluid
+              const grad = ctx.createLinearGradient(pi.x, pi.y, pj.x, pj.y);
+              grad.addColorStop(0, pi.color + lineOpacity + ')');
+              grad.addColorStop(1, pj.color + lineOpacity + ')');
+              ctx.strokeStyle = grad;
+            }
             
-            ctx.strokeStyle = grad;
             ctx.lineWidth = 0.85;
             ctx.stroke();
           }
@@ -197,14 +207,18 @@ export default function MovingBackground({ theme }: MovingBackgroundProps) {
     // Attach listeners
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseleave', handleMouseLeave);
+    if (!isMobile) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseleave', handleMouseLeave);
+    }
     animationFrameId = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseleave', handleMouseLeave);
+      if (!isMobile) {
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mouseleave', handleMouseLeave);
+      }
       cancelAnimationFrame(animationFrameId);
     };
   }, [isDark]);
@@ -213,7 +227,7 @@ export default function MovingBackground({ theme }: MovingBackgroundProps) {
     <div
       ref={containerRef}
       id="moving-background-container"
-      className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden z-[0]"
+      className="fixed inset-0 w-full h-full pointer-events-none select-none overflow-hidden z-[0]"
     >
       {/* Dynamic drifting background light orbs */}
       <div className="absolute inset-0 opacity-100 transition-opacity duration-700">
